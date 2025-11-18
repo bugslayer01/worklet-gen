@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worklet Generator Agent</title>
+    <meta
+      name="description"
+      content="Generate powerful worklets with AI assistance"
+    />
+    <meta name="author" content="Parth Katiyar" />
+
+    <meta property="og:title" content="25dae3f2-f6a9-4977-9cfc-e3527f479643" />
+    <meta
+      property="og:description"
+      content="Worklet Generator Agent for Samsung Prism"
+    />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      // Ensure the HTML <title> and OG meta are set as early as possible using the project's config
+      import("./config.ts").then(({ PROJECT_NAME }) => {
+        try {
+          document.title = PROJECT_NAME;
+          const ogDesc = document.querySelector(
+            'meta[property="og:description"]'
+          );
+          if (ogDesc)
+            ogDesc.setAttribute("content", `${PROJECT_NAME} for Samsung Prism`);
+          const ogTitle = document.querySelector('meta[property="og:title"]');
+          if (ogTitle) ogTitle.setAttribute("content", PROJECT_NAME);
+        } catch (e) {
+          // ignore
+        }
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
